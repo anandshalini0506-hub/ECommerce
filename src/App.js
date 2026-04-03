@@ -104,9 +104,9 @@ function App() {
       <header className="header">
         <h1>ANAND ELECTRONICS WELCOMES YOU!!!</h1>
         <nav className="hrefs">
-          <a href="#home">Home</a>
+          <a href="https://kitristudio.com/">Home</a>
           <br />
-          <a href="#about">About Products</a>
+          <a href="https://www.amazon.in/">About Products</a>
         </nav>
       </header>
       <br />
