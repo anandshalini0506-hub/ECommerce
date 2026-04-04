@@ -60,22 +60,13 @@ const LoginForm = ({ setIsLoggedIn }) => {
 };
 
 const Products = ({ isLoggedIn }) => {
-  // const products = [
-  //   { id: 1, name: "Laptop", price: "$1000", image: laptop },
-  //   { id: 2, name: "Mobile Phone", price: "$500", image: mobile },
-  //   { id: 3, name: "Tablet", price: "$300", image: tablet },
-  // ];
-
-  // Changed price to INR
   const products = [
     { id: "Laptop", name: "Laptop", price: "₹92,700", image: laptop },
     { id: "Mobile Phone", name: "Mobile Phone", price: "₹50,000", image: mobile },
     { id: "Tablet", name: "Tablet", price: "₹35,900", image: tablet },
   ];
 
-  // const [count, setCount] = useState(0);
-
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({})
 
   return (
     <div className="product-list">
@@ -106,8 +97,6 @@ const Products = ({ isLoggedIn }) => {
               <p>Name: {product.name}</p>
               <br />
               <p>Price: {product.price}</p>
-              {/* <button onClick={() => setCount(count + 1)} disabled={!isLoggedIn}>Add to Cart</button>
-              <button onClick={() => setCount(count > 0 ? count - 1 : 0)} disabled={!isLoggedIn}>Remove from Cart</button> */}
 
               <button onClick={() => setCart((prev) => ({...prev,[product.id]: (prev[product.id] || 0) + 1,}))}disabled={!isLoggedIn}>
                 Add to Cart
@@ -120,15 +109,21 @@ const Products = ({ isLoggedIn }) => {
           </div>
         ))}
       </div>
-
-      {/* <p>
-        <b>Items in the cart: {cart}</b>
-      </p> */}
-
-        <p>
-          <b>Items in the cart: {Object.entries(cart).map(([id, qty]) => `${id}:${qty}`).join(", ")}</b>
-        </p>
-
+        
+      <p>
+        <b>Items in the cart: </b>
+      </p>
+      <div>
+          {products.map((product) =>
+            cart[product.id] > 0 ? (
+              <b>
+                <div key={product.id} className="cart-item">
+                  {product.name}: {cart[product.id]}
+                </div>
+              </b>
+            ) : null
+          )}
+      </div>
     </div>
   );
 };
